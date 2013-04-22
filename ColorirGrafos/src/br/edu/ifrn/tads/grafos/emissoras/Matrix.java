@@ -1,6 +1,15 @@
+package br.edu.ifrn.tads.grafos.emissoras;
+
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
+
+/**
+ * Classe que representa uma matriz qualquer para o grafo.
+ * 
+ * @author Alessandro
+ *
+ */
 public class Matrix {
     private int lines;
     private int columns;
@@ -166,6 +175,9 @@ public class Matrix {
         this.setMat(m);
     }
     */
+    /**
+     * Carrega os dados da matriz no arquivo.
+     */
     public void carreg(){
         int      linha        = 0;
         int[][]  mat          = null;
@@ -175,7 +187,7 @@ public class Matrix {
         
         try {
             JFileChooser f1 = new JFileChooser();
-            f1.setDialogTitle("Indique o ficheiro matriz:");
+            f1.setDialogTitle("Indique o caminho para o arquivo da Matriz:");
             f1.showOpenDialog(null);
             
             leitor =  new Scanner( new FileReader(f1.getSelectedFile()));
@@ -207,10 +219,10 @@ public class Matrix {
         this.setLines(mat.length);
         this.setColumns(mat.length);
         this.setMat(mat);
-    }//EO method
+    }
     
     public boolean isSquare(){
         return (this.lines == this.columns) ? true : false ;
     }
     
-}//EO class()
+}

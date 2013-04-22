@@ -1,0 +1,25 @@
+
+IFRN
+
+Teoria dos Grafos - 2012.2
+
+Alessandro Oliveira dos Anjos
+Denilde
+
+Emissoras de Televisão  
+
+A partir de um teorema das 4 cores representamos as emissoras com cores distintas.
+
+ A ORDEM É:
+ 1 - Vermelho 
+ 2 - Amarelo
+ 3 - Verde
+ 4 - Azul
+ 
+ Para poder utilizar o projeto deve-se:
+ 
+ 1 - Executar o classe principal do projeto que é Resultado.java
+ 2 - Abrir o arquivo m1.txt 
+ 3 - Verificar o resultado no arquivo: result.dot
+    Ou então verificar as emissoras no Console.
+ 

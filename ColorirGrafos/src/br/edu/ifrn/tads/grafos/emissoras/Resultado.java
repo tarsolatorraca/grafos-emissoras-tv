@@ -1,6 +1,13 @@
+package br.edu.ifrn.tads.grafos.emissoras;
+
 import javax.swing.JOptionPane;
 
-
+/**
+ * Classe principal do Projeto.
+ * 
+ * @author Alessandro
+ *
+ */
 public class Resultado {
     
 	public Resultado() {}
@@ -23,10 +30,13 @@ public class Resultado {
                 ///grava no arquivo o grafo criado.
                 g.gravaDot("result.dot", g.criaDot());
                 JOptionPane.showMessageDialog(null, "Grafo criado.");
-                System.out.println("Amarelo"+g.getYellow());
-                System.out.println("Vermel"+g.getRed());
-                System.out.println("Azul"+g.getBlue());
-                System.out.println("Verde"+g.getGreen());
+                
+                System.out.println("EMISSORAS DE TELEVISÃO:\n");
+                System.out.println("Vermelho: "+ g.getRed());
+                System.out.println("Amarelo: "+ g.getYellow());
+                System.out.println("Verde: "+ g.getGreen());
+                System.out.println("Azul: "+ g.getBlue());
+                
             }
     }
 }

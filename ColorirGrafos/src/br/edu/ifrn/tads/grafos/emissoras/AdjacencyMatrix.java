@@ -1,4 +1,12 @@
+package br.edu.ifrn.tads.grafos.emissoras;
 
+
+/**
+ * Classe que representa a matriz de adjacência.
+ * 
+ * @author Alessandro
+ *
+ */
 
 public class AdjacencyMatrix extends Matrix{
     private int[] degree;
@@ -113,4 +121,4 @@ public class AdjacencyMatrix extends Matrix{
                     sorted_vertex[b] = tempV;
                 }
     }
-}//EO Class
+}
