@@ -9,7 +9,7 @@ public class Coloracao {
 		int qtdCidades = scan.nextInt();
 		//Cidade.idCidade = 0;
 		for(int i = 1; i <= qtdCidades; i++){
-			System.out.print("Digite o nome da "+ i +"ª cidade: ");
+			System.out.println("Digite o nome da "+ i +"ª cidade: ");
 			Cidade.nomeCidade = scan.nextLine();
 			Cidade.idCidade ++;
 		}
