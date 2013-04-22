@@ -1,10 +1,19 @@
+package br.edu.ifrn.tads.grafos.emissoras;
+
 import java.util.*;
 
+/**
+ * Classe Utilitária para ordenar a lista de vértíces do grafo.
+ * @author Alessandro
+ *
+ */
 public class ListaVertices extends ArrayList<Vertice> {
     
 	public ListaVertices() { }
     
-    // Ordena a lista de vertices por ordem decrescente.
+    /**
+     * Ordena a lista de vertices por ordem decrescente.
+     */
     public void ordena(){
         for(int a = 0 ; a < this.size() - 1; a ++)
             for(int b = a + 1; b < this.size(); b ++)

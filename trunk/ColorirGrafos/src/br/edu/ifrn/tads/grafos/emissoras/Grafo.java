@@ -1,13 +1,21 @@
+package br.edu.ifrn.tads.grafos.emissoras;
+
 import java.io.*;
 import java.util.*;
 
+/**
+ * Classe que representa o Grafo para a coloração.
+ * 
+ * @author Alessandro
+ *
+ */
 public class Grafo {
     private ListaVertices    lst_vertices;
     private AdjacencyMatrix  adjacencias;
-    private ListaVertices    red            = new ListaVertices(); // cor 1 is red;
-    private ListaVertices    yellow         = new ListaVertices(); // cor 2 is yellow;
-    private ListaVertices    green          = new ListaVertices(); // cor 3 is green;
-    private ListaVertices    blue           = new ListaVertices(); // cor 4 is blue;
+    private ListaVertices    red            = new ListaVertices(); 
+    private ListaVertices    yellow         = new ListaVertices(); 
+    private ListaVertices    green          = new ListaVertices(); 
+    private ListaVertices    blue           = new ListaVertices(); 
     private Vertice          vertice_actual;
     private int[][]          pares          = new int[18][2];
     
@@ -35,9 +43,13 @@ public class Grafo {
     }
     //--------------------------------------------------------------------------
     
-    // Percorrendo a lista de vertices do grafo, e consecutivamente
-    // percorrendo a lista dos vizinhos do vertice actual.
-    // Retorna o total de vizinhos do grafo.
+   /**
+    *   Percorrendo a lista de vertices do grafo, e consecutivamente
+    *   percorrendo a lista dos vizinhos do vertice actual.
+    *   Retorna o total de vizinhos do grafo.
+    * @param l
+    * @return
+    */
     public int contaVizinhos(ListaVertices l){
         int total = 0;
         for(Vertice v : l){
@@ -46,11 +58,19 @@ public class Grafo {
         return total;
     }
     
-    // Verifica se determinado vertice esta contido na lista de cores usadas.
+    /**
+     *  Verifica se determinado vertice esta contido na lista de cores usadas.
+     * @param v o vértice do grafo
+     * @param red a cor do vértice
+     * @param yellow cor do vértice
+     * @param green cor do vértice
+     * @param blue cor do vértice
+     * @return o número da cor do vértice
+     */
     public int estaContido(Vertice v, ListaVertices red, ListaVertices yellow,
             ListaVertices green, ListaVertices blue){
         
-        return (red.contains(v))    ? 0 :
+        return (red.contains(v)) ? 0 :
             (yellow.contains(v)) ? 1 :
                 (green.contains(v))  ? 2 :
                     (blue.contains(v))   ? 3 : -123456;
@@ -61,7 +81,9 @@ public class Grafo {
         this.getPares()[contador][1] = b;
         
     }
-    //Retorna a lista dos primeiros pares do grafo.
+    /**
+     * Retorna a lista dos primeiros pares do grafo.
+     */
     public void primeiros_pares() {
         for (int a = 0; a < lst_vertices.get(0).getVizinhos().size(); a++) {
             this.getPares()[a][0] = lst_vertices.get(0).getLabel() + 1;
@@ -69,7 +91,10 @@ public class Grafo {
         }
         
     }
-    //Algoritmo que resolve o problema proposto.
+    /**
+     * Algoritmo que resolve o problema proposto.
+     */
+    //Das 4 cores
     public void resultado(){
         int[] cores_usadas =  new int[4];
         int balde = 0;
@@ -116,7 +141,7 @@ public class Grafo {
             // passa o cores_usadas todo a zeros
             for (int i = 0; i < cores_usadas.length; i++) cores_usadas[i] = 0;
             
-            // Serve para saber a que balde de tinta vamos juntar o vertice
+            // Serve para saber a que cor de tinta vamos juntar o vertice
             switch(x){
                 case 0:
                     red.add(lst_vertices.get(a));
@@ -136,7 +161,9 @@ public class Grafo {
         }// fim de percorrer lista de vertices
     }
     
-    // percorre a matriz de adjacencia e adiciona os seus vertices na lista do grafo.
+    /**
+     * percorre a matriz de adjacencia e adiciona os seus vertices na lista do grafo.
+     */
     public void atribuiVertices(){
         for (int i = 0; i < this.adjacencias.getLines(); i++) {
             // Vertice(label, grau)
@@ -145,7 +172,9 @@ public class Grafo {
         }
     }
     
-    // percorre a matriz de adjacencia e adiciona os vizinhos ao vertices.
+    /**
+     * percorre a matriz de adjacencia e adiciona os vizinhos ao vertices.
+     */
     public void atribuiVizinhos(){
         for (int i = 0; i < this.adjacencias.getLines(); i++) {
             for (int j = 0; j < adjacencias.getColumns(); j++) {
@@ -227,7 +256,7 @@ public class Grafo {
     // formatada em DOT.
     public String criaDot(){
         int pares = contaVizinhos(getLstVertices()) / 2;
-        String s = "graph{\n";
+        String s = "GRAFO{\n";
         
         for (int a = 0; a < pares; a++) {
             //for (int b = 0; b < 2; b++) {
@@ -240,20 +269,20 @@ public class Grafo {
             switch(getLstVertices().get(a).getCor()){
                 case 1:
                     s += (getLstVertices().get(a).getLabel() + 1 ) +
-                            "[color=red,style=filled];\n";
+                            "[color=red];\n";
                     break;
                 case 2:
                     s += (getLstVertices().get(a).getLabel() + 1 ) +
-                            "[color=yellow,style=filled];\n";
+                            "[color=yellow];\n";
                     break;
                 case 3:
                     s += (getLstVertices().get(a).getLabel() + 1 ) +
-                            "[color=green,style=filled];\n";
+                            "[color=green];\n";
                     
                     break;
                 case 4:
                     s += (getLstVertices().get(a).getLabel() + 1 ) +
-                            "[color=blue,style=filled];\n";
+                            "[color=blue];\n";
                     break;
                 default:
                     //nada
@@ -262,7 +291,7 @@ public class Grafo {
         s += "}";
         return s;     
     }
-    // Grava a lista de pares num ficheiro em format DOT.
+    // Grava a lista de pares num ficheiro em format dot.
     public void gravaDot(String file, String dot){
         Formatter escritor = null;
         try {
@@ -270,7 +299,7 @@ public class Grafo {
             escritor = new Formatter(new File(file));
             
         }catch(FileNotFoundException fnfe){
-            System.err.println("Ficheiro nao encontrado!");
+            System.err.println("O Arquivo não foi encontrado!");
             System.exit(1);
         }
         

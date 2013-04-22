@@ -1,4 +1,10 @@
+package br.edu.ifrn.tads.grafos.emissoras;
 
+/**
+ * Classe que representa os vértice do Grafo
+ * @author Alessandro
+ *
+ */
 public class Vertice {
    
 	private int label;
@@ -89,6 +95,10 @@ public class Vertice {
         return this.vizinhos.get(pos);
     }
     //--------------------------------------------------------------------------
+    /**
+     * Sobrescrita do método toString para mostrar os dados do Grafo.
+     */
+    @Override
     public String toString(){
         String s = "";
         
@@ -104,4 +114,4 @@ public class Vertice {
         return "Vertice->" + (getLabel() + 1) + " Grau->" + getGrau() + " Vizinhos->{" + s + "} Cor->" + getCor();
     }
  
-}//EO Class()
+}
